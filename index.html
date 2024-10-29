@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IndexedDB PWA</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h1>Prueba de PWA con IndexedDB</h1>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>Valor</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody id="data-table">
+      <!-- Aquí se mostrarán las entradas de la base de datos -->
+    </tbody>
+  </table>
+
+  <form id="data-form">
+    <input type="text" id="key" placeholder="Clave" required>
+    <input type="text" id="value" placeholder="Valor" required>
+    <button type="submit">Guardar</button>
+  </form>
+
+  <script src="app.js"></script>
+</body>
+</html>
