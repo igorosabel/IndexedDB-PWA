@@ -66,6 +66,29 @@ function deleteItem(key) {
   };
 }
 
+if (screen.orientation && screen.orientation.lock) {
+  screen.orientation.lock("landscape").catch((error) => {
+    console.error("Error al bloquear la orientación: " + error);
+  });
+} else {
+  console.warn("La API de bloqueo de orientación no es compatible en este navegador.");
+}
+
+function checkOrientation() {
+  const warning = document.getElementById("orientation-warning");
+  if (window.innerHeight > window.innerWidth) {
+    // Modo vertical (portrait)
+    warning.style.display = "block";
+  } else {
+    // Modo horizontal (landscape)
+    warning.style.display = "none";
+  }
+}
+
+window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("orientationchange", checkOrientation);
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js")
     .then(() => console.log("Service Worker registrado correctamente"))

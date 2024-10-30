@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IndexedDB PWA</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    .orientation-warning {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      padding-top: 50%;
+      box-sizing: border-box;
+      z-index: 9999;
+    }
+  </style>
 </head>
 <body>
   <h1>Prueba de PWA con IndexedDB</h1>
@@ -27,6 +44,10 @@
     <input type="text" id="value" placeholder="Valor" required>
     <button type="submit">Guardar</button>
   </form>
+
+  <div class="orientation-warning" id="orientation-warning">
+    Por favor, gira tu dispositivo a modo horizontal para una mejor experiencia.
+  </div>
 
   <script src="app.js"></script>
 </body>
