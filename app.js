@@ -91,6 +91,26 @@ window.addEventListener("orientationchange", checkOrientation);
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js")
-    .then(() => console.log("Service Worker registrado correctamente"))
+    //.then(() => console.log("Service Worker registrado correctamente"))
+    .then((registration) => {
+      console.log("Service Worker registrado correctamente");
+
+      registration.addEventListener("updatefound", () => {
+        const newWorker = registration.installing;
+
+        newWorker.addEventListener("statechange", () => {
+          if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+            // Notificar al usuario que hay una actualización disponible
+            const updateNotification = document.createElement("div");
+            updateNotification.classList.add('update-notification');
+            updateNotification.innerHTML = `
+              <p>Hay una nueva versión disponible.</p>
+              <button onclick="window.location.reload()">Actualizar</button>
+            `;
+            document.body.appendChild(updateNotification);
+          }
+        });
+      });
+    })
     .catch((error) => console.error("Error al registrar Service Worker:", error));
 }

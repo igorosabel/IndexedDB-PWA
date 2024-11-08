@@ -1,4 +1,4 @@
-const CACHE_NAME = "pwa-cache-v1";
+const CACHE_NAME = "pwa-cache-v3";
 const ASSETS = [
   "/",
   "/index.html",
@@ -6,6 +6,7 @@ const ASSETS = [
   "/manifest.json",
   "/favicon.ico",
   "/sw.js",
+  "/styles.css",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
   "/icons/screenshot-mobile.png",
